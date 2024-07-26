@@ -22,6 +22,18 @@ TopTalk is a news aggregator application that allows users to browse news articl
 
 - Docker installed on your machine
 
+## .env files
+ 
+ Create 2 .env files
+ 
+ 1. .env in ui folder content
+ 
+ VITE_NEWS_API_KEY=92db3f7a2897475b95986c3d9f9ea8fe
+ 
+ 2. .env in server folder content- 
+
+NEWS_API_KEY=92db3f7a2897475b95986c3d9f9ea8fe
+JWT_SECRET=top_talk12345
 
 ## How to run:
 
@@ -33,3 +45,4 @@ Open directory open terminal
 docker compose up --build
 
 Open [http://localhost:3000/]
+
