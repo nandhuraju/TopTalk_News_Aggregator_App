@@ -23,12 +23,13 @@ TopTalk is a news aggregator application that allows users to browse news articl
 - Docker installed on your machine
 
 
+## How to run:
 
-# Clone the repository
- git clone https://github.com/nandhuraju/tTopTalk_The _News-Aggregator_App.git
+Clone the repository
+ git clone https://github.com/nandhuraju/TopTalk_News_Aggregator_App.git
 
-# Open directory open terminal
+Open directory open terminal
 
-# docker compose up --build
+docker compose up --build
 
-# Open [http://localhost:3000/]
+Open [http://localhost:3000/]
