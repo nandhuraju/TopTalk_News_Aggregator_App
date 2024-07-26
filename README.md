@@ -24,12 +24,11 @@ TopTalk is a news aggregator application that allows users to browse news articl
 
 
 
-### Clone the repository
+# Clone the repository
+ git clone https://github.com/nandhuraju/tTopTalk_The _News-Aggregator_App.git
 
+# Open directory open terminal
 
-## git clone https://github.com/nandhuraju/tTopTalk_The _News-Aggregator_App.git
+# docker compose up --build
 
-## Open directory open terminal
-
-## docker compose up --build
-## Open [http://localhost:3000/]
+# Open [http://localhost:3000/]
