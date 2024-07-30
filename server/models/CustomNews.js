@@ -12,6 +12,6 @@ const customNewsSchema = new mongoose.Schema({
 // Adding the text index
 customNewsSchema.index({ title: "text", description: "text" });
 
-const CustomNews = mongoose.model("CustomNews", customNewsSchema);
+const CustomNews = mongoose.model("customnews", customNewsSchema);
 
 module.exports = CustomNews;
