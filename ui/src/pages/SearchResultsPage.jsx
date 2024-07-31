@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+
 import { toast } from "react-toastify";
 
 const SearchResultsPage = () => {
-  const location = useLocation();
+
   const [articles, setArticles] = useState([]);
   const [bookmarkedArticles, setBookmarkedArticles] = useState([]);
   const [loading, setLoading] = useState(true);
