@@ -19,7 +19,7 @@ const LoginPage = () => {
         const userType = data.userType;
         toast.success(`Logged in as: ${userType}`);
 
-        // Store token in localStorage or a global state (e.g., context or redux)
+        
         localStorage.setItem('token', data.token);
 
         // Fetch user information
