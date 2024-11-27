@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logout from "./Logout";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode }from "jwt-decode";
 import { FaUser } from "react-icons/fa";
 import { SiGoogleearth } from "react-icons/si";
 import { IoBookmarks } from "react-icons/io5";
@@ -21,11 +21,11 @@ const Navbar = () => {
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        setUserType(decodedToken.userType);
-        setUsername(decodedToken.username || "");
+        setUserType(decodedToken.userType); // Extracts userType from token
+        setUsername(decodedToken.username || ""); // Extracts username from token
       } catch (error) {
         console.error("Failed to decode token:", error);
-        // Handle error, such as removing the token or redirecting the user
+        // Handle token decoding errors
         localStorage.removeItem("token");
         navigate("/login");
       }
@@ -39,22 +39,24 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between bg-green-300 shadow-md h-20 ">
-      <div className="flex my-auto ml-2">
+    <div className="flex justify-between items-center bg-green-300 shadow-md h-20 px-4">
+      {/* Left section - Logo */}
+      <div className="flex items-center">
         <SiGoogleearth size={40} color="green" />
         <Link
           to="/home"
-          className="text-4xl hover:text-lime-700 font-extrabold text-lime-600 ml-3 "
+          className="text-4xl hover:text-lime-700 font-extrabold text-lime-600 ml-3"
         >
           TopTalk
         </Link>
       </div>
 
-      <div className="flex items-center">
+      {/* Center section - Search */}
+      <div className="flex items-center flex-grow mx-4">
         <input
           type="text"
           placeholder="Search News..."
-          className="px-4 py-2 rounded shadow"
+          className="flex-grow px-4 py-2 rounded shadow text-sm"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -66,57 +68,55 @@ const Navbar = () => {
         </button>
       </div>
 
-      <div className="flex items-center">
-        <div className="flex items-center  mr-3">
-          {username && (
-            <span className=" text-lime-600 font-semibold flex ">
-              <FaUser size={18} color="green" />
-              {username}
-            </span>
-          )}
-        </div>
-        <div className="flex items-center">
-          <AiFillHome size={22} color="green" />
+      {/* Right section - User Info and Links */}
+      <div className="flex items-center space-x-4">
+        {/* Username and Role */}
+        {username && (
+          <span className="text-lime-600 font-semibold flex items-center">
+            <FaUser size={18} color="green" className="mr-1" />
+            {username}{" "}
+            <span className="ml-2 text-sm text-gray-700">({userType})</span>
+          </span>
+        )}
+
+        {/* Navigation Links */}
+        <Link
+          to="/home"
+          className="text-lime-600 hover:text-lime-700 flex items-center text-base font-semibold"
+        >
+          <AiFillHome size={22} className="mr-1" />
+          Home
+        </Link>
+
+        <Link
+          to="/bookmarks"
+          className="text-lime-600 hover:text-lime-700 flex items-center text-base font-semibold"
+        >
+          <IoBookmarks size={18} className="mr-1" />
+          Bookmarks
+        </Link>
+
+        <Link
+          to="/categories"
+          className="text-lime-600 hover:text-lime-700 flex items-center text-base font-semibold"
+        >
+          <BiSolidCategoryAlt size={20} className="mr-1" />
+          Categories
+        </Link>
+
+        {/* Admin-only Links */}
+        {userType === "admin" && (
           <Link
-            to="/home"
-            className="text-lime-600 hover:text-lime-700 px-3 py-2 text-base font-semibold"
+            to="/addnews"
+            className="text-lime-600 hover:text-lime-700 flex items-center text-base font-semibold"
           >
-            Home
+            <MdPlaylistAdd size={22} className="mr-1" />
+            Add News
           </Link>
-        </div>
-        <div className="flex items-center">
-          <IoBookmarks size={18} color="green" />
-          <Link
-            to="/bookmarks"
-            className="text-lime-600 hover:text-lime-700 px-3 py-2 text-base font-semibold"
-          >
-            Bookmarks
-          </Link>
-        </div>
-        <div className="flex items-center">
-          <BiSolidCategoryAlt size={20} color="green" />
-          <Link
-            to="/categories"
-            className="text-lime-600 hover:text-lime-700 px-3 py-2 text-base font-semibold"
-          >
-            Categories
-          </Link>
-        </div>
-        <div className="flex items-center">
-          <MdPlaylistAdd size={25} color="green" />{" "}
-          {userType === "admin" && (
-            <Link
-              to="/addnews"
-              className="text-lime-600 hover:text-lime-700 px-3 py-2 text-base font-semibold "
-            >
-              Add News
-            </Link>
-          )}
-        </div>
-        <div className="flex items-center">
-          <IoLogOut size={22} color="green" />
-          <Logout />
-        </div>
+        )}
+
+        {/* Logout */}
+        <Logout className="text-lime-600 hover:text-lime-700 flex items-center text-base font-semibold" />
       </div>
     </div>
   );
