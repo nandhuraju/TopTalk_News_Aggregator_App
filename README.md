@@ -26,9 +26,15 @@ Ensure you have the following installed on your system:
 Follow these steps to set up and run the app locally:
 
 ### Clone the Repository
-```bash
-git clone https://github.com/your-username/toptalk.git
-cd toptalk
+
+git clone https://github.com/nandhuraju/TopTalk_News_Aggregator_App.git
+
+cd TopTalk_News_Aggregator_App
+
+docker compose up --build
+
+App will start running here   http://localhost:3000/
+
 
 ## User Roles: Admin and Subscriber
 
