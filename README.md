@@ -12,6 +12,21 @@ TopTalk is a web application that provides a personalized news experience by fet
 - **Admin Functionality**: Admins can add and edit news articles.
 
 ---
+## Features
+
+- User registration and login
+- Personalized news feed based on selected categories
+- Bookmark articles for later reading
+- Search for news articles
+- Admin functionality to add, update, and delete news articles
+
+## Tech Stack
+
+- Frontend: React, Tailwind CSS
+- Backend: Node.js, Express
+- Database: MongoDB
+- Authentication: JWT (JSON Web Token)
+- Docker for containerization
 
 ## Prerequisites
 
@@ -28,6 +43,19 @@ Follow these steps to set up and run the app locally:
 ### Clone the Repository
 
 git clone https://github.com/nandhuraju/TopTalk_News_Aggregator_App.git
+
+## .env files
+ 
+ Create 2 .env files
+ 
+ 1. .env in ui folder - content:
+ 
+ VITE_NEWS_API_KEY=Your NewsAPI Key
+ 
+ 2. .env in server folder - content:
+
+NEWS_API_KEY=Your NewsAPI Key
+JWT_SECRET=Your Secret Code
 
 cd TopTalk_News_Aggregator_App
 
